@@ -69,7 +69,7 @@ Create a new project with specified name and description.
 - `description` (string, required): Project description (min 1 character)
 - `isPublic` (boolean, optional): Public visibility (default: true)
 
-**Language**: Automatically detected from MCP path locale
+**Language**: Automatically detected from MCP path locale (`/mcp/{locale}/project`)
 
 **Response Format**:
 ```json
@@ -104,7 +104,7 @@ Update project information (name, description, or visibility).
 
 **Note**: Include only fields you want to update. All update fields are optional.
 
-**Language**: Automatically detected from MCP path locale
+**Language**: Automatically detected from MCP path locale (`/mcp/{locale}/project`)
 
 **Response Format**:
 ```json
@@ -226,7 +226,7 @@ Create a new variable in a project.
   - **Vietnamese (vi)**: 2-24 chars, Vietnamese+영문+숫자
 - `isAbbreviation` (boolean, required): Whether this is an abbreviation
 
-**Language**: Automatically detected from MCP path locale
+**Language**: Automatically detected from MCP path locale (`/mcp/{locale}/project`)
 
 **Response Format**:
 ```json
@@ -422,12 +422,14 @@ VARGG MCP stores variables in **SNAKE_CASE** format:
 
 ### Language Detection
 
-Language (`locale`) is automatically detected from the MCP path:
-- `/api/mcp/en/project` → English
-- `/api/mcp/ko/project` → Korean
-- etc.
+Language (`locale`) is automatically detected from the MCP endpoint path `/mcp/{locale}/project`:
+- `/mcp/ko/project` → Korean (locale: "ko")
+- `/mcp/en/project` → English (locale: "en")
+- `/mcp/ja/project` → Japanese (locale: "ja")
+- `/mcp/zh/project` → Chinese (locale: "zh")
+- `/mcp/vi/project` → Vietnamese (locale: "vi")
 
-You can also explicitly specify `locale` parameter in tools that support it.
+**Note**: Some tools require explicit `locale` parameter even when using locale-specific endpoints, while others automatically use the endpoint locale.
 
 ### Pagination
 

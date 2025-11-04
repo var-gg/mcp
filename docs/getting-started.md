@@ -59,14 +59,16 @@ Add the following configuration:
 {
   "mcpServers": {
     "vargg": {
-      "url": "https://var.gg/api/mcp",
+      "url": "https://var.gg/mcp/ko/project",
       "headers": {
-        "API_KEY": "your-api-key-here"
+        "X-API-KEY": "your-api-key-here"
       }
     }
   }
 }
 ```
+
+**Note**: Replace `ko` with your preferred locale (`en`, `ja`, `zh`, `vi`).
 
 **Replace `your-api-key-here` with your actual API key from Step 2.**
 
@@ -168,8 +170,8 @@ The AI will find matching variables and can suggest using them in generated code
 
 **Solutions**:
 1. Verify your API key is correct (no extra spaces)
-2. Check that the URL is `https://var.gg/api/mcp`
-3. Ensure you're using the correct header name: `API_KEY`
+2. Check that the URL is exactly `https://var.gg/mcp/{locale}/project` (e.g., `https://var.gg/mcp/ko/project`)
+3. Ensure you're using the correct header name: `X-API-KEY` (required for App Engine)
 4. Restart Cursor IDE
 5. Check your internet connection
 

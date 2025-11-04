@@ -57,15 +57,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **MCP Protocol Version**: 2024-11-05
 - **Server Version**: 1.0.0
-- **API Endpoint**: `/api/mcp`
-- **Authentication**: Bearer token via API_KEY header
-- **Response Format**: JSON (text content type)
+- **API Endpoint**: `/mcp/{locale}/project` (locale-specific JSON-RPC 2.0)
+  - Example: `https://var.gg/mcp/ko/project` for Korean
+  - Example: `https://var.gg/mcp/en/project` for English
+  - Supported locales: `ko`, `en`, `ja`, `zh`, `vi`
+- **Authentication**: API key via `X-API-KEY` header (required for App Engine, also supports `Authorization: Bearer <token>`)
+- **Response Format**: JSON-RPC 2.0 format (JSON)
 
 ### Known Limitations
 
 - Variable deletion removes project-variable mapping only, not the variable itself
 - Project deletion is currently disabled for safety
 - Some advanced features (variable usage tracking, bulk operations) are planned for future releases
+- The following endpoints exist in the backend but are not exposed via MCP tools:
+  - `/api/mcp/variables/register` - Variable registration to projects (deprecated)
+  - `/api/mcp/variables/usage` - Variable usage tracking (deprecated)
 
 ---
 

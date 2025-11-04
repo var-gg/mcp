@@ -46,14 +46,16 @@ Add the following configuration:
 {
   "mcpServers": {
     "vargg": {
-      "url": "https://var.gg/api/mcp",
+      "url": "https://var.gg/mcp/ko/project",
       "headers": {
-        "API_KEY": "your-api-key-here"
+        "X-API-KEY": "your-api-key-here"
       }
     }
   }
 }
 ```
+
+**Note**: Replace `ko` with your preferred locale (`en`, `ja`, `zh`, `vi`).
 
 **Important**: Replace `your-api-key-here` with your actual API key.
 
@@ -77,15 +79,15 @@ If you need to use different API keys for different projects or teams:
 {
   "mcpServers": {
     "vargg-production": {
-      "url": "https://var.gg/api/mcp",
+      "url": "https://var.gg/mcp/ko/project",
       "headers": {
-        "API_KEY": "production-api-key"
+        "X-API-KEY": "production-api-key"
       }
     },
     "vargg-staging": {
-      "url": "https://var.gg/api/mcp",
+      "url": "https://var.gg/mcp/ko/project",
       "headers": {
-        "API_KEY": "staging-api-key"
+        "X-API-KEY": "staging-api-key"
       }
     }
   }
@@ -100,9 +102,9 @@ For local development or custom deployments:
 {
   "mcpServers": {
     "vargg-local": {
-      "url": "http://localhost:8082/api/mcp",
+      "url": "http://localhost:8082/mcp/ko/project",
       "headers": {
-        "API_KEY": "your-local-api-key"
+        "X-API-KEY": "your-local-api-key"
       }
     }
   }
@@ -117,9 +119,9 @@ If you experience timeout issues, you can configure timeouts (if supported by Cu
 {
   "mcpServers": {
     "vargg": {
-      "url": "https://var.gg/api/mcp",
+      "url": "https://var.gg/mcp/ko/project",
       "headers": {
-        "API_KEY": "your-api-key"
+        "X-API-KEY": "your-api-key"
       },
       "timeout": 30000
     }
@@ -141,9 +143,9 @@ If you're running VARGG MCP locally:
    {
      "mcpServers": {
        "vargg": {
-         "url": "http://localhost:8082/api/mcp",
+         "url": "http://localhost:8082/mcp/ko/project",
          "headers": {
-           "API_KEY": "your-local-api-key"
+           "X-API-KEY": "your-local-api-key"
          }
        }
      }
@@ -163,7 +165,7 @@ If you're behind a corporate firewall:
 
 Required outbound connections:
 - **HTTPS**: `https://var.gg` (port 443)
-- **API Endpoint**: `https://var.gg/api/mcp` (port 443)
+- **MCP Endpoint**: `https://var.gg/mcp/{locale}/project` (port 443, e.g., `https://var.gg/mcp/ko/project`)
 
 ---
 
@@ -217,8 +219,8 @@ API keys inherit your user permissions:
 
 **Checklist**:
 1. ✅ API key is correct (no extra spaces or line breaks)
-2. ✅ URL is exactly `https://var.gg/api/mcp`
-3. ✅ Header name is `API_KEY` (case-sensitive)
+2. ✅ URL is exactly `https://var.gg/mcp/{locale}/project` (e.g., `https://var.gg/mcp/ko/project`)
+3. ✅ Header name is `X-API-KEY` (required for App Engine, case-sensitive)
 4. ✅ Internet connection is active
 5. ✅ Cursor IDE is restarted after configuration change
 
@@ -226,7 +228,7 @@ API keys inherit your user permissions:
 - Double-check the JSON syntax (valid JSON required)
 - Try regenerating the API key
 - Check Cursor IDE console for error messages
-- Verify the API endpoint is accessible: `curl https://var.gg/api/mcp`
+- Verify the API endpoint is accessible: `curl https://var.gg/mcp/ko/project`
 
 #### Problem: "Authentication failed"
 

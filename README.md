@@ -4,6 +4,13 @@
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Discussions](https://img.shields.io/badge/discussions-welcome-blue)](https://github.com/var-gg/mcp/discussions)
 
+**Languages / 语言 / 言語 / 언어 / Ngôn ngữ:**
+- [![English](https://img.shields.io/badge/English-Click-yellow)](README.md)
+- [![한국어](https://img.shields.io/badge/한국어-클릭-yellow)](README-ko.md)
+- [![日本語](https://img.shields.io/badge/日本語-クリック-blue)](README-ja.md)
+- [![简体中文](https://img.shields.io/badge/简体中文-点击查看-orange)](README-zh.md)
+- [![Tiếng Việt](https://img.shields.io/badge/Tiếng_Việt-Nhấn_vào-green)](README-vi.md)
+
 > **Project metadata management tool through Model Context Protocol**
 
 Manage variable names, constants, and standard terminology per project systematically, and integrate with Cursor IDE to help LLMs use consistent naming conventions.
@@ -92,14 +99,16 @@ Add the following configuration:
 {
   "mcpServers": {
     "vargg": {
-      "url": "https://var.gg/api/mcp",
+      "url": "https://var.gg/mcp/ko/project",
       "headers": {
-        "API_KEY": "your-api-key-here"
+        "X-API-KEY": "your-api-key-here"
       }
     }
   }
 }
 ```
+
+**Note**: Replace `ko` with your preferred locale (`en`, `ja`, `zh`, `vi`).
 
 Replace `your-api-key-here` with your actual API key from step 1.
 
@@ -224,6 +233,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ### Code Publication
 Currently, this repository contains documentation and community resources only. The MCP server implementation code is not yet open source, but we may publish it in the future. Check back for updates!
+
+### Architecture Note
+The VARGG MCP implementation uses a JSON-RPC 2.0 protocol interface. Cursor IDE communicates with the MCP server using JSON-RPC 2.0, which then translates requests to REST API calls to the backend. The frontend acts as a proxy layer between Cursor's MCP protocol and the backend REST API.
 
 ### Version Management
 Even though the code is not published, we track MCP tool versions and feature changes in [CHANGELOG.md](CHANGELOG.md).
